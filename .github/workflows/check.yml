@@ -5,7 +5,7 @@ on:
     
 
 jobs:
-  build:
+  test:
     if: github.event.repository.owner.id == github.event.sender.id
     runs-on: ubuntu-20.04
     permissions:
@@ -13,5 +13,5 @@ jobs:
     steps:
     - name: Display
       run: |
-        sudo cat /etc/fstab
+        sudo mount | grep -i nexec
  
