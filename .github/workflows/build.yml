@@ -23,11 +23,11 @@ on:
         description: 'DEVICE_PATH'
         required: true
         default: 'device/asus/I003D'
-      COMMON_TREE_URL:
-        description: 'COMMON_TREE_URL (if no common tree, leave blank)'
+      KERNEL_SOURCE_URL:
+        description: 'KERNEL_SOURCE_URL (if no kernel source, leave blank)'
         required: false
-      COMMON_PATH:
-        description: 'COMMON_PATH (if no common tree, leave blank)'
+      KERNEL_PATH:
+        description: 'KERNEL_PATH (if no kernel source, leave blank)'
         required: false
       DEVICE_NAME:
         description: 'DEVICE_NAME'
@@ -119,12 +119,12 @@ jobs:
         git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
-    - name: Clone common tree
+    - name: Clone kernel source
       if: |
-        github.event.inputs.COMMON_TREE_URL != null
-        && github.event.inputs.COMMON_PATH != null
+        github.event.inputs.KERNEL_SOURCE_URL != null
+        && github.event.inputs.KERNEL_PATH != null
       run: |
-        git clone ${{ github.event.inputs.COMMON_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.COMMON_PATH }}
+        git clone ${{ github.event.inputs.KERNEL_SOURCE_URL }} ./${{ github.event.inputs.KERNEL_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Check Build Tree
