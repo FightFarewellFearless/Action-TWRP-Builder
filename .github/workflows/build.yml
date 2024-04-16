@@ -18,7 +18,7 @@ on:
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'a03nnxx-user-13-TP1A.220624.014-A035FXXS3CWC2-release-keys'
+        default: 'a03nnxx-user-11-RP1A.200720.012-A035FXXS6CXA3-release-keys'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
